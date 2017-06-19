@@ -54,6 +54,6 @@ Temporary Items
 .cbp
 .depend
 .layout
-bin
-obj
-release
+bin/
+obj/
+release/
