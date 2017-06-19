@@ -48,11 +48,11 @@ Temporary Items
 
 
 #perso
-.png
-.ico
-.txt
-.cbp
-.depend
-.layout
+*.png
+*.ico
+*.txt
+*.cbp
+*.depend
+*.layout
 bin
 obj
