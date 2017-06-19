@@ -4,19 +4,21 @@
 #include <vector>
 #include <fstream>
 
-#include "functions.hpp"
 #include "step.hpp"
+#include "functions.hpp"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    string nomRoute;
+    string routeName;
     unsigned int nbEtapes;
+    string s;
+    s = "yolo";
 
-    cout << "Route Name : ";
-    getline(cin, nomRoute);
-    cout << endl << "Nombres d'etapes : ";
+    cout << "Route name: ";
+    getline(cin, routeName);
+    cout << endl << "Number of steps: ";
     cin >> nbEtapes;
 
     Step etapes[nbEtapes];
@@ -24,7 +26,7 @@ int main(int argc, char *argv[])
 
     getSteps(etapes, nbEtapes);
     makeRoute(etapes, nbEtapes, route);
-    printRoute(route, nomRoute);
+    printRoute(route, routeName);
 
     return EXIT_SUCCESS;
 }

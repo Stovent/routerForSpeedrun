@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1489063912 source:c:\users\elian\dropbox\routerforspeedrun\class.cpp
+	<string>
+	"class.h"
+
+1490695673 source:c:\users\elian\dropbox\routerforspeedrun\main.cpp
+	<iostream>
+	<cstdlib>
+	<string>
+	<vector>
+	<fstream>
+	"functions.hpp"
+	"step.hpp"
+
+1489063844 c:\users\elian\dropbox\routerforspeedrun\class.h
+	<string>
+
+1489060723 c:\users\elian\dropbox\routerforspeedrun\main.h
+
+1489062854 c:\users\elian\dropbox\routerforspeedrun\functions.h
+	"class.h"
+
+1490695883 source:c:\users\elian\dropbox\routerforspeedrun\functions.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"functions.hpp"
+	"step.hpp"
+
+1490636786 c:\users\elian\dropbox\routerforspeedrun\functions.hpp
+	"step.hpp"
+
+1490636883 c:\users\elian\dropbox\routerforspeedrun\step.hpp
+	<string>
+	<vector>
+
+1490636883 source:c:\users\elian\dropbox\routerforspeedrun\step.cpp
+	<string>
+	<vector>
+	"step.hpp"
+
+1490360134 source:c:\users\elian\dropbox\routerforspeedrun\ressources.rc
+
+1490360134 source:c:\users\elian\dropbox\routerforspeedrun\src\ressources.rc
+
+1497905667 source:c:\users\elian\dropbox\routerforspeedrun\src\step.cpp
+	<string>
+	<vector>
+	"step.hpp"
+
+1490636883 c:\users\elian\dropbox\routerforspeedrun\src\step.hpp
+	<string>
+	<vector>
+
+1497906092 source:c:\users\elian\dropbox\routerforspeedrun\src\functions.cpp
+	<iostream>
+	<string>
+	<fstream>
+	"step.hpp"
+	"functions.hpp"
+
+1497905487 c:\users\elian\dropbox\routerforspeedrun\src\functions.hpp
+	"step.hpp"
+
+1497906800 source:c:\users\elian\dropbox\routerforspeedrun\src\main.cpp
+	<iostream>
+	<cstdlib>
+	<string>
+	<vector>
+	<fstream>
+	"step.hpp"
+	"functions.hpp"
+
