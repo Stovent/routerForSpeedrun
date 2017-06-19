@@ -26,7 +26,7 @@ Step 4 | name : key
 Step 4 | number of requisites : 0
 
 Test route:
-letter
+letter\n
 key
 sword
 boss
