@@ -1,7 +1,3 @@
 /*
-/src/*
 
 !/src/.gitignore
-*.layout
-*.depend
-/src/bin/*
