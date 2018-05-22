@@ -1,7 +1,4 @@
 /*
+/*/*
 
-/src/*
-!/src/*.cpp
-!/src/*.hpp
-!/src/*.rc
-!/src/*.ico
+!/src/.gitignore
