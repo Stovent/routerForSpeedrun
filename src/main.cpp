@@ -41,9 +41,25 @@ int main(int argc, char* argv[])
 
 
     // calculates the route
+    while(route.size() < steps.size())
+        for(auto step : steps)
+        {
+            for(auto itStep = step.second.GetPrerequisites().begin(); itStep != step.second.GetPrerequisites().end(); itStep++)
+            {
+                for(auto itRoute = route.begin(); itRoute != route.end(); itRoute++)
+                {
+                    if(*itStep == *itRoute)
+                        step.second.GetPrerequisites().erase(itRoute);
+                    if(step.second.GetPrerequisites().empty())
+                        step.second.Usable();
+                    if(step.second.IsUsable() && !(step.second.IsUsed()))
+                        route.push_back(step.first);
+                }
+            }
+        }
 
 
-
+    // show input
     for(auto value : steps)
     {
         std::cout << value.first << std::endl;
@@ -51,6 +67,10 @@ int main(int argc, char* argv[])
         for(auto val : typ)
             std::cout << "  " << val << std::endl;
     }
+
+    //show route
+    for(auto value : route)
+        std::cout << value << std::endl;
 
 
     return 0;
