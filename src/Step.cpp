@@ -12,6 +12,10 @@ void Step::AddPrerequisite(std::string name)
 
 bool Step::IsUsable()
 {
-    return !prerequisites.empty();
+    return usable;
 }
 
+void Step::Usable(bool val)
+{
+    usable = val;
+}
