@@ -1,46 +1,24 @@
 # routerForSpeedrun
 How to use it: <br />
+Drag and drop the input file on the program.
+The input file contain the steps in the following format : 
+
+stepName nbrOfPrerequisites prerequisite1 prerequisite2 ...
+
 requisites : the steps that need to be completed to complete this step
 
 Example:
-You need to go to the boss, but before, you need the sword, and to have the sword, you need a letter and a key. Procced as follow:
+You need to go to the boss, but before, you need the sword, and to have the sword, you need a letter and a key. The file should be as follow:
 (The order doesn't matter)
 
-Route name: Test
-
-Number of steps: 4
-
-Step 1 | name : sword
-
-Step 1 | number of requisites : 2
-
-Step 1 | requisite 1 : key
-
-Step 1 | requisite 2 : letter
+sword 2 key letter
+boss 1 sword
+letter 0
+key 0
 
 
 
-Step 2 | name : boss
-
-Step 2 | number of requisites : 1
-
-Step 2 | requisite 1 : sword
-
-
-
-Step 3 | name : letter
-
-Step 3 | number of requisites : 0
-
-
-
-Step 4 | name : key
-
-Step 4 | number of requisites : 0
-
-
-
-Test route:
+Route:
 
 letter
 
