@@ -13,7 +13,7 @@ public:
     Step();
     
     bool IsUsable();
-    void AddPrerequisites(std::string name);
+    void AddPrerequisite(std::string name);
 };
 
 #endif // STEP_HPP
