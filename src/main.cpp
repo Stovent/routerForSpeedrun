@@ -43,8 +43,15 @@ int main(int argc, char* argv[])
     // calculates the route
 
 
+
     for(auto value : steps)
+    {
         std::cout << value.first << std::endl;
+        auto typ = value.second.GetPrerequisites();
+        for(auto val : typ)
+            std::cout << "  " << val << std::endl;
+    }
+
 
     return 0;
 }

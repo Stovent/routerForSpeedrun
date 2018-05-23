@@ -16,8 +16,10 @@ public:
 
     bool IsUsable();
     void Usable();
+
     bool IsUsed();
     void Used();
+
     void AddPrerequisite(std::string name);
     std::vector<std::string>& GetPrerequisites();
 };
