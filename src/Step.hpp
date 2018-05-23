@@ -8,11 +8,13 @@ class Step
 {
 private:
     std::vector<std::string> prerequisites;
+    bool usable;
 
 public:
     Step();
     
     bool IsUsable();
+    void Usable(bool val);
     void AddPrerequisite(std::string name);
 };
 
