@@ -11,19 +11,16 @@ Example:
 You need to go to the boss, but before, you need the sword, and to have the sword, you need a letter and a key. The file should be as follow:
 (The order doesn't matter)
 
-sword 2 key letter
-boss 1 sword
-letter 0
-key 0
+sword 2 key letter<br/>
+boss 1 sword<br/>
+letter 0<br/>
+key 0<br/>
 
 
 
 Route:
 
 letter
-
 key
-
 sword
-
 boss
