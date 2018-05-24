@@ -1,7 +1,8 @@
 # routerForSpeedrun
 How to use it: \
 Bring the name/path to the input file as the first argument or drag and drop the input file on the program. \
-By default, the output file is named route.txt, make sure it is not the name of an existing file that you don't want overwrite. You can name the output file yourself by giving its name as the second argument.\
+By default, the output file is named route.txt, make sure it is not the name of an existing file that you don't want overwrite. You can name the output file yourself by giving its name as the second argument.
+
 The input file contain the steps in the following format : 
 
 stepName1 nbrOfPrerequisites prerequisite1 prerequisite2 ... \
