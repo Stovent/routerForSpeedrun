@@ -3,7 +3,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <map>
 
 #include "Step.hpp"
 
@@ -12,7 +11,7 @@ int main(int argc, char* argv[])
     if(argc < 2 || argc > 3)
     {
         std::cout << "This program needs one or two arguments." << std::endl;
-        std::cout << "first argument is the input file containing the steps. Second argument (optional) is the name of the output file << std::endl;
+        std::cout << "first argument is the input file containing the steps. Second argument (optional) is the name of the output file" << std::endl;
         return 1;
     }
 
@@ -40,42 +39,48 @@ int main(int argc, char* argv[])
         }
     }
 
-
-    // calculates the route
-    while(route.size() < steps.size())
-    {
-        for(auto step : steps)
-        {
-            std::vector<std::string>& prereqs = step.second.GetPrerequisites();
-            
-            for(auto itPrereq = prereqs.begin(); itPrereq != prereqs.end(); itPrereq++)
-            {
-                for(auto itRoute = route.begin(); itRoute != route.end(); itRoute++)
-                    if(*itPrereq == *itRoute) // if prerequisite is in the route
-                        prereqs.erase(itPrereq); // then we remove it from the list
-                    
-                if(prereqs.empty()) // if the prerequisite is empty
-                    step.second.Usable(); // this mean there is no prerequsites mising so we can use it in the route
-
-                if(step.second.IsUsable() && !(step.second.IsUsed())) // if the step is usable and not already used (in the route)
-                {
-                    route.push_back(step.first); // we add it to the route
-                    step.second.Used(); // it become unusable
-                }
-            }
-        }
-    }
-
-
+    std::cout << "input : " << std::endl;
     // show input
     for(auto value : steps)
     {
         std::cout << value.first << std::endl;
-        auto typ = value.second.GetPrerequisites();
-        for(auto val : typ)
+        auto prereq = value.second.GetPrerequisites();
+        for(auto val : prereq)
             std::cout << "  " << val << std::endl;
+        std::cout << std::endl;
     }
 
+    // calculates the route
+    while(route.size() < steps.size())
+    {
+        for(auto step = steps.begin(); step != steps.end(); step++)
+        {
+            std::vector<std::string>& prerequisites = step->second.GetPrerequisites();
+
+            for(auto itPre = prerequisites.begin(); itPre != prerequisites.end(); itPre++)
+            {
+                if(find(route.begin(), route.end(), *itPre) != route.end())
+                {
+                    prerequisites.erase(itPre);
+                    itPre--;
+                }
+            }
+
+            if(prerequisites.empty())
+            {
+                step->second.Usable();
+            }
+
+            if(step->second.IsUsable() && !(step->second.IsUsed()))
+            {
+                route.push_back(step->first);
+                step->second.Used();
+            }
+
+        }
+    }
+
+    std::cout << std::endl << "output : " << std::endl;
     std::ofstream output((argc == 3) ? argv[2] : "route.txt");
     //show route
     for(auto value : route)
@@ -83,7 +88,6 @@ int main(int argc, char* argv[])
         std::cout << value << std::endl;
         output << value << std::endl;
     }
-
 
     return 0;
 }

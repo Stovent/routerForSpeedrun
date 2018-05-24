@@ -1,5 +1,5 @@
 #include "Step.hpp"
-
+#include <iostream>
 Step::Step()
 {
     used = false;
