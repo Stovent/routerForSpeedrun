@@ -42,6 +42,7 @@ int main(int argc, char* argv[])
 
     // calculates the route
     while(route.size() < steps.size())
+    {
         for(auto step : steps)
         {
             std::vector<std::string>& prereqs = step.second.GetPrerequisites();
@@ -49,21 +50,20 @@ int main(int argc, char* argv[])
             for(auto itPrereq = prereqs.begin(); itPrereq != prereqs.end(); itPrereq++)
             {
                 for(auto itRoute = route.begin(); itRoute != route.end(); itRoute++)
-                {
                     if(*itPrereq == *itRoute) // if prerequisite is in the route
                         prereqs.erase(itPrereq); // then we remove it from the list
                     
-                    if(prereqs.empty()) // if the prerequisite is empty
-                        step.second.Usable(); // this mean there is no prerequsites mising so we can use it in the route
-                    
-                    if(step.second.IsUsable() && !(step.second.IsUsed())) // if the step is usable and not already used (in the route)
-                    {
-                        route.push_back(step.first); // we add it to the route
-                        step.second.Used(); // it become unusable
-                    }
+                if(prereqs.empty()) // if the prerequisite is empty
+                    step.second.Usable(); // this mean there is no prerequsites mising so we can use it in the route
+
+                if(step.second.IsUsable() && !(step.second.IsUsed())) // if the step is usable and not already used (in the route)
+                {
+                    route.push_back(step.first); // we add it to the route
+                    step.second.Used(); // it become unusable
                 }
             }
         }
+    }
 
 
     // show input
