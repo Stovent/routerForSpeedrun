@@ -9,9 +9,10 @@
 
 int main(int argc, char* argv[])
 {
-    if(argc != 2)
+    if(argc < 2 || argc > 3)
     {
-        std::cout << "This program need 1 and only 1 file!" << std::endl;
+        std::cout << "This program needs one or two arguments." << std::endl;
+        std::cout << "first argument is the input file containing the steps. Second argument (optional) is the name of the output file << std::endl;
         return 1;
     }
 
@@ -75,9 +76,13 @@ int main(int argc, char* argv[])
             std::cout << "  " << val << std::endl;
     }
 
+    std::ofstream output((argc == 3) ? argv[2] : "route.txt");
     //show route
     for(auto value : route)
+    {
         std::cout << value << std::endl;
+        output << value << std::endl;
+    }
 
 
     return 0;
