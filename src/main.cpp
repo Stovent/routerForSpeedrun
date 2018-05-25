@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -12,35 +13,34 @@ int main(int argc, char* argv[])
     {
         std::cout << "This program needs one or two arguments." << std::endl;
         std::cout << "first argument is the input file containing the steps. Second argument (optional) is the name of the output file" << std::endl;
-        return 1;
+        exit(1);
     }
 
 
     std::vector<std::string> route; // final route
     std::vector<std::pair<std::string, Step>> steps;
-
     std::ifstream input(argv[1]);
-    std::string tmp, tmpName;
-    int tmpArg = 0;
-
     if(!input.good())
     {
-        std::cout << "Couldn\'t open input \'" << argv[1] << "\'! Stopping..." << std::endl;
+        std::cout << "Couldn't open input file '" << argv[1] << "'! Stopping..." << std::endl;
         exit(1);
     }
 
-    // read input file and create steps
-    while(!input.eof())
+    std::string argName, stepName;
+    int argNbr = 0;
+    std::string line;
+    while(std::getline(input, line))// read input file and create steps
     {
-        input >> tmpName;
-        steps.push_back(std::pair<std::string, Step>(tmpName, Step()));
-        input >> tmpArg;
-        while(tmpArg)
+        std::stringstream sline(line); // used to avoid duplication of the last step if input file finish by a new line
+        sline >> stepName;
+        steps.push_back(std::pair<std::string, Step>(stepName, Step()));
+        sline >> argNbr;
+        while(argNbr)
         {
-            input >> tmp;
+            sline >> argName;
             auto it = steps.end() - 1;
-            it->second.AddPrerequisite(tmp);
-            tmpArg--;
+            it->second.AddPrerequisite(argName);
+            argNbr--;
         }
     }
 
@@ -55,31 +55,30 @@ int main(int argc, char* argv[])
         std::cout << std::endl;
     }
 
+    const unsigned int size = steps.size();
     // calculates the route
-    while(route.size() < steps.size())
+    while(route.size() < size) // while the route is not completed,
     {
-        for(auto step = steps.begin(); step != steps.end(); step++)
+        for(auto step = steps.begin(); step != steps.end(); step++) // for every step,
         {
-            std::vector<std::string>& prerequisites = step->second.GetPrerequisites();
+            std::vector<std::string>& prerequisites = step->second.GetPrerequisites(); // I retrives its prerequisites,
 
-            for(auto itPre = prerequisites.begin(); itPre != prerequisites.end(); itPre++)
+            for(auto itPre = prerequisites.begin(); itPre != prerequisites.end(); itPre++) // and for each of them,
             {
-                if(find(route.begin(), route.end(), *itPre) != route.end())
+                if(find(route.begin(), route.end(), *itPre) != route.end()) // if it is in the route
                 {
-                    prerequisites.erase(itPre);
+                    prerequisites.erase(itPre); // then it is completed and so removed for the list.
                     itPre--;
                 }
             }
 
-            if(prerequisites.empty())
-            {
-                step->second.Usable();
-            }
+            if(prerequisites.empty()) // if there is no more prerequisites,
+                step->second.Usable(); // then the step can be used in the route.
 
-            if(step->second.IsUsable() && !(step->second.IsUsed()))
+            if(step->second.IsUsable() && !(step->second.IsUsed())) // if the step can be used and is not already used,
             {
-                route.push_back(step->first);
-                step->second.Used();
+                route.push_back(step->first); // we add it into the list,
+                step->second.Used(); // we set it to Used so it won't be used twice,
             }
 
         }
