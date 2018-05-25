@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
         std::stringstream sline(line); // used to avoid duplication of the last step if input file finish by a new line
         sline >> stepName;
         steps.push_back(std::pair<std::string, Step>(stepName, Step()));
+        stepName = "";
         sline >> argNbr;
         while(argNbr)
         {
