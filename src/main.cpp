@@ -23,6 +23,11 @@ int main(int argc, char* argv[])
     std::string tmp, tmpName;
     int tmpArg = 0;
 
+    if(!input.good())
+    {
+        std::cout << "Couldn\'t open input \'" << argv[1] << "\'! Stopping..." << std::endl;
+        exit(1);
+    }
 
     // read input file and create steps
     while(!input.eof())
